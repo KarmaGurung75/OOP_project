@@ -126,6 +126,28 @@ public class billing_system implements ActionListener{
 		txt_name = new JTextField();
 		txt_name.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String Name = txt_name.getText();
+			    try {
+			    	Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/billing_system","root","karma16502@");
+					Statement myStmt = myConn.createStatement();
+			    	ResultSet rs = myStmt.executeQuery("select * from tbl_buyer where name like '"+Name+"%' ");
+			    	if(rs.next()) {
+			    		txt_name.setText(rs.getString(1));
+			    		txt_contact.setText(rs.getString(2));
+			    		txt_email.setText(rs.getString(3));
+			    		txt_address.setText(rs.getString(4));	
+			    	}
+			    	else {
+			    		txt_contact.setText("");
+			    		txt_email.setText("");
+			    		txt_address.setText("");	
+			    		
+			    	}
+			    }
+			    catch(Exception e1){
+			    	JOptionPane.showMessageDialog(null, e);
+			    }
+				
 				
 			}
 		});
