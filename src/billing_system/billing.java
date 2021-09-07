@@ -523,28 +523,6 @@ public class billing implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/*// TODO Auto-generated method stub 
-		String Name =txt_name.getText();
-		String Pname = Product_name.getText();
-		String Pid = product_id.getText();
-		String Des =Description.getText();
-		String Rt = Rate.getText();
-		String Qty = Quantity.getText();
-		String Total= Total_txt.getText();	
-		
-		if (e.getSource() == btnsave) {
-			database_connector dc= new database_connector();
-			String query = "insert into final_data"
-					+ "(name, product_name,product_id,description,rate,quantity,total) "
-					+ "values('" +Name + "','" + Pname + "','" + Pid+ "','" +Des + "','" + Rt + "','" + Qty + "','" + Total + "')";
-			int val= dc.insert(query);
-			if (val>0) {
-				JOptionPane.showMessageDialog(frame,"Data Save Successflly");	
-			}
-			else {
-				JOptionPane.showMessageDialog(frame, "Failed to save the data");
-			}
-		}*/
 		
 	}
 }

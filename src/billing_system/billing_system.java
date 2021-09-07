@@ -126,27 +126,6 @@ public class billing_system implements ActionListener{
 		txt_name = new JTextField();
 		txt_name.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String Name = txt_name.getText();
-			    try {
-			    	Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/billing_system","root","karma16502@");
-					Statement myStmt = myConn.createStatement();
-			    	ResultSet rs = myStmt.executeQuery("select * from tbl_buyer where name like '"+Name+"%' ");
-			    	if(rs.next()) {
-			    		txt_name.setText(rs.getString(1));
-			    		txt_contact.setText(rs.getString(2));
-			    		txt_email.setText(rs.getString(3));
-			    		txt_address.setText(rs.getString(4));	
-			    	}
-			    	else {
-			    		txt_contact.setText("");
-			    		txt_email.setText("");
-			    		txt_address.setText("");	
-			    		
-			    	}
-			    }
-			    catch(Exception e1){
-			    	JOptionPane.showMessageDialog(null, e);
-			    }
 				
 			}
 		});
@@ -162,29 +141,7 @@ public class billing_system implements ActionListener{
 		
 		txt_contact = new JTextField();
 		txt_contact.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String Contact = txt_contact.getText();
-			    try {
-			    	Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/billing_system","root","karma16502@");
-					Statement myStmt = myConn.createStatement();
-			    	ResultSet rs = myStmt.executeQuery("select * from tbl_buyer where contact_no like '"+Contact+"%' ");
-			    	if(rs.next()) {
-			    		txt_name.setText(rs.getString(1));
-			    		txt_contact.setText(rs.getString(2));
-			    		txt_email.setText(rs.getString(3));
-			    		txt_address.setText(rs.getString(4));	
-			    	}
-			    	else {
-			    		txt_contact.setText("");
-			    		txt_email.setText("");
-			    		txt_address.setText("");	
-			    		
-			    	}
-			    }
-			    catch(Exception e1){
-			    	JOptionPane.showMessageDialog(null, e);
-			    }
-				
+			public void actionPerformed(ActionEvent e) {				
 			}
 		});
 		txt_contact.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -200,28 +157,7 @@ public class billing_system implements ActionListener{
 		txt_email = new JTextField();
 		txt_email.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String Email = txt_email.getText();
-			    try {
-			    	Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/billing_system","root","karma16502@");
-					Statement myStmt = myConn.createStatement();
-			    	ResultSet rs = myStmt.executeQuery("select * from tbl_buyer where email like '"+Email+"%' ");
-			    	if(rs.next()) {
-			    		txt_name.setText(rs.getString(1));
-			    		txt_contact.setText(rs.getString(2));
-			    		txt_email.setText(rs.getString(3));
-			    		txt_address.setText(rs.getString(4));	
-			    	}
-			    	else {
-			    		txt_contact.setText("");
-			    		txt_email.setText("");
-			    		txt_address.setText("");	
-			    		
-			    	}
-			    }
-			    catch(Exception e1){
-			    	JOptionPane.showMessageDialog(null, e);
-			    }
-				
+
 			}
 		});
 		txt_email.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -262,31 +198,7 @@ public class billing_system implements ActionListener{
 		product_id = new JTextField();
 		product_id.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String Product_ID = product_id.getText();
-			    try {
-			    	Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/billing_system","root","karma16502@");
-					Statement myStmt = myConn.createStatement();
-			    	ResultSet rs = myStmt.executeQuery("select * from tbl_product where product_id like '"+Product_ID+"%' ");
-			    	if(rs.next()) {
-			    		product_id.setText(rs.getString(1));
-			    	    Product_name.setText(rs.getString(2));
-			    		Rate.setText(rs.getString(3));
-			    		Quantity.setText(rs.getString(4));
-			    		Description.setText(rs.getString(5));
-			    		
-			    	}
-			    	else {
-			    		Product_name.setText(" ");
-				    	Rate.setText(" ");
-				    	Quantity.setText(" ");
-				    	Description.setText(" ");
-			    		
-			    	}
-			    }
-			    catch(Exception e1){
-			    	JOptionPane.showMessageDialog(null, e);
-			    }
-				
+			
 				
 			}
 		});
@@ -483,28 +395,6 @@ public class billing_system implements ActionListener{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				String Name =txt_name.getText();
-				String Pname = Product_name.getText();
-				String Pid = product_id.getText();
-				String Des =Description.getText();
-				String Rt = Rate.getText();
-				String Qty = Quantity.getText();
-				String Total= Total_txt.getText();	
-				
-				if (e.getSource() == btnsave) {
-					database_connector dc= new database_connector();
-					String query = "insert into final_data"
-							+ "(customer_name, product_name,product_id,description,rate,quantity,total) "
-							+ "values('" +Name + "','" + Pname + "','" + Pid+ "','" +Des + "','" + Rt + "','" + Qty + "','" + Total + "')";
-					int val= dc.insert(query);
-					if (val>0) {
-						JOptionPane.showMessageDialog(frame,"Data Save Successflly");	
-					}
-					else {
-						JOptionPane.showMessageDialog(frame, "Failed to save the data");
-					}
-				}
 				
 			}
 			
