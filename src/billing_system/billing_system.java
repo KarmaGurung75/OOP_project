@@ -201,7 +201,28 @@ public class billing_system implements ActionListener{
 		txt_email = new JTextField();
 		txt_email.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				String Email = txt_email.getText();
+			    try {
+			    	Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/billing_system","root","karma16502@");
+					Statement myStmt = myConn.createStatement();
+			    	ResultSet rs = myStmt.executeQuery("select * from tbl_buyer where email like '"+Email+"%' ");
+			    	if(rs.next()) {
+			    		txt_name.setText(rs.getString(1));
+			    		txt_contact.setText(rs.getString(2));
+			    		txt_email.setText(rs.getString(3));
+			    		txt_address.setText(rs.getString(4));	
+			    	}
+			    	else {
+			    		txt_contact.setText("");
+			    		txt_email.setText("");
+			    		txt_address.setText("");	
+			    		
+			    	}
+			    }
+			    catch(Exception e1){
+			    	JOptionPane.showMessageDialog(null, e);
+			    }
+				
 			}
 		});
 		txt_email.setFont(new Font("Tahoma", Font.PLAIN, 14));
