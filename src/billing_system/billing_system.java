@@ -357,6 +357,7 @@ public class billing_system implements ActionListener{
 		btnAdd.setIcon(new ImageIcon("C:\\java_folder\\OOP_project\\src\\billing_system\\add.png"));
 		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnAdd.setBounds(1012, 304, 118, 41);
+		frame.getContentPane().add(btnAdd);
 		
 		separator_3.setBackground(Color.BLACK);
 		separator_3.setBounds(0, 351, 1162, 10);
