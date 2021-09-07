@@ -360,7 +360,25 @@ public class billing_system implements ActionListener{
 		
 		
 		/// exit
-		
+		JButton btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int opt=JOptionPane.showConfirmDialog(null,"Are you sure to Exit?","Exit",JOptionPane.YES_NO_OPTION);
+				//YES_NO_CANCEL_OPTION;
+				if (opt==0) {
+					dispose_frame();
+				}
+			}
+
+			private void dispose_frame() {
+				// TODO Auto-generated method stub
+				frame.dispose();
+			}
+		});
+		btnExit.setIcon(new ImageIcon("C:\\java_folder\\OOP_project\\src\\billing_system\\exit1.png"));
+		btnExit.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnExit.setBounds(1012, 502, 118, 45);
+		frame.getContentPane().add(btnExit);
 		
 		JButton btnsave = new JButton("Save");
 		btnsave.addActionListener(new ActionListener() {
