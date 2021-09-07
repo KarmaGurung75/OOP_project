@@ -333,27 +333,35 @@ public class billing_system implements ActionListener{
 		
 		
 		////// btn clear
-
-		
-		
-		JButton btnExit = new JButton("Exit");
-		btnExit.addActionListener(new ActionListener() {
+		JButton btnClear = new JButton("Clear");
+		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int opt=JOptionPane.showConfirmDialog(null,"Are you sure to Exit?","Exit",JOptionPane.YES_NO_OPTION);
-				//YES_NO_CANCEL_OPTION;
-				if (opt==0) {
-					dispose_frame();
-				}
-			}
-
-			private void dispose_frame() {
-				// TODO Auto-generated method stub
-				frame.dispose();
+				txt_name.setText("");
+				txt_contact.setText("");
+	    		txt_email.setText("");
+	    		txt_address.setText("");
+	    		Product_name.setText(" ");
+	    		product_id.setText(" ");
+		    	Rate.setText(" ");
+		    	Quantity.setText(" ");
+		    	Description.setText(" ");
+		    	Total_txt.setText("");
+		    	Pamount_txt.setText("");
+		    	Ramount_txt.setText("");
+				((DefaultTableModel)table.getModel()).setNumRows(0);
 			}
 		});
+		btnClear.setIcon(new ImageIcon("C:\\java_folder\\OOP_project\\src\\billing_system\\clear1.png"));
+		btnClear.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnClear.setBounds(1012, 442, 118, 45);
+		frame.getContentPane().add(btnClear);
+
+		
 		
 		
 		/// exit
+		
+		
 		JButton btnsave = new JButton("Save");
 		btnsave.addActionListener(new ActionListener() {
 
