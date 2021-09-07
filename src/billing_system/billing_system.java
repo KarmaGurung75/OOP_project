@@ -249,6 +249,7 @@ public class billing_system implements ActionListener{
 		frame.getContentPane().add(Description);
 		Description.setColumns(10);
 		
+		////////ADD
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -258,8 +259,8 @@ public class billing_system implements ActionListener{
 				DefaultTableModel model = (DefaultTableModel)table.getModel();
 				model.addRow(new Object [] {Product_name.getText(),product_id.getText(), Description.getText(),price,quantity,total});
 				final_Total = final_Total + total;
-				String finalTotal=String.valueOf(final_Total);
-				Total_txt.setText(finalTotal);
+				String finalTotal1=String.valueOf(final_Total);
+				Total_txt.setText(finalTotal1);
 				
 				
 				
@@ -268,7 +269,7 @@ public class billing_system implements ActionListener{
 		btnAdd.setIcon(new ImageIcon("C:\\java_folder\\OOP_project\\src\\billing_system\\add.png"));
 		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnAdd.setBounds(1012, 304, 118, 41);
-		frame.getContentPane().add(btnAdd);
+		
 		separator_3.setBackground(Color.BLACK);
 		separator_3.setBounds(0, 351, 1162, 10);
 		frame.getContentPane().add(separator_3);
@@ -277,22 +278,7 @@ public class billing_system implements ActionListener{
 		scrollPane.setBounds(10, 362, 533, 201);
 		frame.getContentPane().add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Name", "Product ID", "Description", "Rate", "Quantity", "Total"
-			}
-		));
-		table.getColumnModel().getColumn(0).setPreferredWidth(80);
-		table.getColumnModel().getColumn(2).setPreferredWidth(90);
-		table.getColumnModel().getColumn(3).setPreferredWidth(70);
-		table.getColumnModel().getColumn(4).setPreferredWidth(70);
-		table.getColumnModel().getColumn(5).setPreferredWidth(80);
-		table.setFillsViewportHeight(true);
-		table.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		scrollPane.setViewportView(table);
+		///////// table
 		
 		JLabel lblCalculation = new JLabel("Calculation Details:");
 		lblCalculation.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -315,18 +301,10 @@ public class billing_system implements ActionListener{
 		lblPAmount.setBounds(553, 447, 96, 35);
 		frame.getContentPane().add(lblPAmount);
 		
-		Pamount_txt = new JTextField();
-		Pamount_txt.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String paidAmount = Pamount_txt.getText();
-				int z = Integer.parseInt(paidAmount);
-				final_Total = z - final_Total;
-				String final_Total1 = String.valueOf(final_Total);
-				Ramount_txt.setText(final_Total1);
-				Ramount_txt.setEditable(false);
-				
-			}
-		});
+		
+		//// paid amount
+		
+		
 		Pamount_txt.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Pamount_txt.setBounds(682, 450, 302, 30);
 		frame.getContentPane().add(Pamount_txt);
@@ -343,32 +321,10 @@ public class billing_system implements ActionListener{
 		frame.getContentPane().add(Ramount_txt);
 		Ramount_txt.setColumns(10);
 		
-		JButton btnClear = new JButton("Clear");
-		btnClear.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				txt_name.setText("");
-				txt_contact.setText("");
-	    		txt_email.setText("");
-	    		txt_address.setText("");
-	    		Product_name.setText(" ");
-	    		product_id.setText(" ");
-		    	Rate.setText(" ");
-		    	Quantity.setText(" ");
-		    	Description.setText(" ");
-		    	Total_txt.setText("");
-		    	Pamount_txt.setText("");
-		    	Ramount_txt.setText("");
-		    	final_Total =0;
-		    	
-				((DefaultTableModel)table.getModel()).setNumRows(0);
-				/*setVisible(true);
-				new billing_system().setVisible(false);*/
-			}
-		});
-		btnClear.setIcon(new ImageIcon("C:\\java_folder\\OOP_project\\src\\billing_system\\clear1.png"));
-		btnClear.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnClear.setBounds(1012, 442, 118, 45);
-		frame.getContentPane().add(btnClear);
+		
+		////// btn clear
+
+		
 		
 		JButton btnExit = new JButton("Exit");
 		btnExit.addActionListener(new ActionListener() {
@@ -385,11 +341,9 @@ public class billing_system implements ActionListener{
 				frame.dispose();
 			}
 		});
-		btnExit.setIcon(new ImageIcon("C:\\java_folder\\OOP_project\\src\\billing_system\\exit1.png"));
-		btnExit.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnExit.setBounds(1012, 502, 118, 45);
-		frame.getContentPane().add(btnExit);
 		
+		
+		/// exit
 		JButton btnsave = new JButton("Save");
 		btnsave.addActionListener(new ActionListener() {
 
@@ -422,28 +376,6 @@ public class billing_system implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/*// TODO Auto-generated method stub 
-		String Name =txt_name.getText();
-		String Pname = Product_name.getText();
-		String Pid = product_id.getText();
-		String Des =Description.getText();
-		String Rt = Rate.getText();
-		String Qty = Quantity.getText();
-		String Total= Total_txt.getText();	
-		
-		if (e.getSource() == btnsave) {
-			database_connector dc= new database_connector();
-			String query = "insert into final_data"
-					+ "(name, product_name,product_id,description,rate,quantity,total) "
-					+ "values('" +Name + "','" + Pname + "','" + Pid+ "','" +Des + "','" + Rt + "','" + Qty + "','" + Total + "')";
-			int val= dc.insert(query);
-			if (val>0) {
-				JOptionPane.showMessageDialog(frame,"Data Save Successflly");	
-			}
-			else {
-				JOptionPane.showMessageDialog(frame, "Failed to save the data");
-			}
-		}*/
-		
+			
 	}
 }
