@@ -263,11 +263,34 @@ public class billing_system implements ActionListener{
 		product_id = new JTextField();
 		product_id.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+				String Product_ID = product_id.getText();
+			    try {
+			    	Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/billing_system","root","karma16502@");
+					Statement myStmt = myConn.createStatement();
+			    	ResultSet rs = myStmt.executeQuery("select * from tbl_product where product_id like '"+Product_ID+"%' ");
+			    	if(rs.next()) {
+			    		product_id.setText(rs.getString(1));
+			    	    Product_name.setText(rs.getString(2));
+			    		Rate.setText(rs.getString(3));
+			    		Quantity.setText(rs.getString(4));
+			    		Description.setText(rs.getString(5));
+			    		
+			    	}
+			    	else {
+			    		Product_name.setText(" ");
+				    	Rate.setText(" ");
+				    	Quantity.setText(" ");
+				    	Description.setText(" ");
+			    		
+			    	}
+			    }
+			    catch(Exception e1){
+			    	JOptionPane.showMessageDialog(null, e);
+			    }
+				
 				
 			}
-		});
-		product_id.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		});		product_id.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		product_id.setBounds(92, 270, 61, 25);
 		frame.getContentPane().add(product_id);
 		product_id.setColumns(10);
