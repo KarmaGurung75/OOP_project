@@ -163,7 +163,29 @@ public class billing_system implements ActionListener{
 		
 		txt_contact = new JTextField();
 		txt_contact.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {				
+			public void actionPerformed(ActionEvent e) {
+				String Contact = txt_contact.getText();
+			    try {
+			    	Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/billing_system","root","karma16502@");
+					Statement myStmt = myConn.createStatement();
+			    	ResultSet rs = myStmt.executeQuery("select * from tbl_buyer where contact_no like '"+Contact+"%' ");
+			    	if(rs.next()) {
+			    		txt_name.setText(rs.getString(1));
+			    		txt_contact.setText(rs.getString(2));
+			    		txt_email.setText(rs.getString(3));
+			    		txt_address.setText(rs.getString(4));	
+			    	}
+			    	else {
+			    		txt_contact.setText("");
+			    		txt_email.setText("");
+			    		txt_address.setText("");	
+			    		
+			    	}
+			    }
+			    catch(Exception e1){
+			    	JOptionPane.showMessageDialog(null, e);
+			    }
+				
 			}
 		});
 		txt_contact.setFont(new Font("Tahoma", Font.PLAIN, 14));
