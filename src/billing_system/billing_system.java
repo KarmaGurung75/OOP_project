@@ -303,8 +303,18 @@ public class billing_system implements ActionListener{
 		
 		
 		//// paid amount
-		
-		
+		Pamount_txt = new JTextField();
+		Pamount_txt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String paidAmount = Pamount_txt.getText();
+				int z = Integer.parseInt(paidAmount);
+				final_Total = z - final_Total;
+				String final_Total1 = String.valueOf(final_Total);
+				Ramount_txt.setText(final_Total1);
+				Ramount_txt.setEditable(false);
+				
+			}
+		});
 		Pamount_txt.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		Pamount_txt.setBounds(682, 450, 302, 30);
 		frame.getContentPane().add(Pamount_txt);
