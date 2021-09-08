@@ -368,6 +368,22 @@ public class billing_system implements ActionListener{
 		frame.getContentPane().add(scrollPane);
 		
 		///////// table
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Name", "Product ID", "Description", "Rate", "Quantity", "Total"
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(80);
+		table.getColumnModel().getColumn(2).setPreferredWidth(90);
+		table.getColumnModel().getColumn(3).setPreferredWidth(70);
+		table.getColumnModel().getColumn(4).setPreferredWidth(70);
+		table.getColumnModel().getColumn(5).setPreferredWidth(80);
+		table.setFillsViewportHeight(true);
+		table.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		scrollPane.setViewportView(table);
 		
 		JLabel lblCalculation = new JLabel("Calculation Details:");
 		lblCalculation.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -472,8 +488,29 @@ public class billing_system implements ActionListener{
 		JButton btnsave = new JButton("Save");
 		btnsave.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String Name =txt_name.getText();
+				String Pname = Product_name.getText();
+				String Pid = product_id.getText();
+				String Des =Description.getText();
+				String Rt = Rate.getText();
+				String Qty = Quantity.getText();
+				String Total= Total_txt.getText();	
+				
+				if (e.getSource() == btnsave) {
+					database_connector dc= new database_connector();
+					String query = "insert into final_data"
+							+ "(customer_name, product_name,product_id,description,rate,quantity,total) "
+							+ "values('" +Name + "','" + Pname + "','" + Pid+ "','" +Des + "','" + Rt + "','" + Qty + "','" + Total + "')";
+					int val= dc.insert(query);
+					if (val>0) {
+						JOptionPane.showMessageDialog(frame,"Data Save Successflly");	
+					}
+					else {
+						JOptionPane.showMessageDialog(frame, "Failed to save the data");
+					}
+				}
 				
 			}
 			
