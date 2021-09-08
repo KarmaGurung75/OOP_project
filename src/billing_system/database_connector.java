@@ -22,8 +22,15 @@ public class database_connector {
 			e.printStackTrace();
 		}	
 	}
-	
-	
+	public int insert(String query) {	
+		try {
+			ans = st.executeUpdate(query);
+			}catch (SQLException throwables) {
+				throwables.printStackTrace();
+				}
+		return ans;
+		}
+
 	public static void main(String[] args) {
 		new database_connector();
 		}
