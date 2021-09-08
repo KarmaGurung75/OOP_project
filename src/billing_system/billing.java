@@ -492,7 +492,7 @@ public class billing implements ActionListener{
 				if (e.getSource() == btnsave) {
 					database_connector dc= new database_connector();
 					String query = "insert into final_data"
-							+ "(name, product_name,product_id,description,rate,quantity,total) "
+							+ "(customer_name, product_name,product_id,description,rate,quantity,total) "
 							+ "values('" +Name + "','" + Pname + "','" + Pid+ "','" +Des + "','" + Rt + "','" + Qty + "','" + Total + "')";
 					int val= dc.insert(query);
 					if (val>0) {
