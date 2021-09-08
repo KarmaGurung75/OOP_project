@@ -525,7 +525,7 @@ public class billing_system implements ActionListener{
 		lblTitle.setBounds(67, 6, 436, 84);
 		frame.getContentPane().add(lblTitle);
 		
-		JLabel lblBackground = new JLabel("New label");
+		JLabel lblBackground = new JLabel(" ");
 		lblBackground.setIcon(new ImageIcon("C:\\java_folder\\OOP_project\\src\\billing_system\\bg2.png"));
 		lblBackground.setBounds(4, 0, 1158, 611);
 		frame.getContentPane().add(lblBackground);
