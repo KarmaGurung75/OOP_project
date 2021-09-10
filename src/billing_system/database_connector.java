@@ -1,14 +1,13 @@
 package billing_system;
 
 
-import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.*;
 
 public class database_connector {
 	Connection con;
 	Statement st;
 	int ans;
+	private ResultSet rows;
 	
 	public database_connector() {
 		try {
@@ -30,6 +29,18 @@ public class database_connector {
 				}
 		return ans;
 		}
+	
+	
+	public ResultSet select(String query) {
+		try {
+			rows = st.executeQuery(query);
+		}
+		catch(SQLException throwables) {
+			throwables.printStackTrace();
+		}
+		return rows;
+		
+	}
 
 	public static void main(String[] args) {
 		new database_connector();
