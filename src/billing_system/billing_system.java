@@ -130,7 +130,7 @@ public class billing_system implements ActionListener{
 			    try {
 			    	Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/billing_system","root","karma16502@");
 					Statement myStmt = myConn.createStatement();
-			    	ResultSet rs = myStmt.executeQuery("select * from tbl_buyer where name like '"+Name+"%' ");
+			    	ResultSet rs = myStmt.executeQuery("select name,contact_no,email,address from tbl_buyer where name like '"+Name+"%' ");
 			    	if(rs.next()) {
 			    		txt_name.setText(rs.getString(1));
 			    		txt_contact.setText(rs.getString(2));
@@ -168,7 +168,7 @@ public class billing_system implements ActionListener{
 			    try {
 			    	Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/billing_system","root","karma16502@");
 					Statement myStmt = myConn.createStatement();
-			    	ResultSet rs = myStmt.executeQuery("select * from tbl_buyer where contact_no like '"+Contact+"%' ");
+			    	ResultSet rs = myStmt.executeQuery("select name,contact_no,email,address from tbl_buyer where contact_no like '"+Contact+"%' ");
 			    	if(rs.next()) {
 			    		txt_name.setText(rs.getString(1));
 			    		txt_contact.setText(rs.getString(2));
@@ -205,7 +205,7 @@ public class billing_system implements ActionListener{
 			    try {
 			    	Connection myConn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/billing_system","root","karma16502@");
 					Statement myStmt = myConn.createStatement();
-			    	ResultSet rs = myStmt.executeQuery("select * from tbl_buyer where email like '"+Email+"%' ");
+			    	ResultSet rs = myStmt.executeQuery("select name,contact_no,email,address from tbl_buyer where email like '"+Email+"%' ");
 			    	if(rs.next()) {
 			    		txt_name.setText(rs.getString(1));
 			    		txt_contact.setText(rs.getString(2));
@@ -491,18 +491,18 @@ public class billing_system implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				String Name =txt_name.getText();
+				String contact =txt_contact.getText();
 				String Pname = Product_name.getText();
 				String Pid = product_id.getText();
-				String Des =Description.getText();
-				String Rt = Rate.getText();
-				String Qty = Quantity.getText();
-				String Total= Total_txt.getText();	
+				String Total =Total_txt.getText();
+				String paid_amount = Pamount_txt.getText();
+				String return_amount= Ramount_txt.getText();
 				
 				if (e.getSource() == btnsave) {
 					database_connector dc= new database_connector();
 					String query = "insert into final_data"
-							+ "(customer_name, product_name,product_id,description,rate,quantity,total) "
-							+ "values('" +Name + "','" + Pname + "','" + Pid+ "','" +Des + "','" + Rt + "','" + Qty + "','" + Total + "')";
+							+ "(customer_name,contact_no, product_name,product_id,total,paid_amount,return_amount) "
+							+ "values('" +Name + "','" + contact + "','" + Pname + "','" + Pid+ "','" +Total + "','" + paid_amount + "','" + return_amount + "')";
 					int val= dc.insert(query);
 					if (val>0) {
 						JOptionPane.showMessageDialog(frame,"Data Save Successflly");	
