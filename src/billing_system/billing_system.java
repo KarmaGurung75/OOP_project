@@ -454,6 +454,7 @@ public class billing_system implements ActionListener{
 		    	Pamount_txt.setText("");
 		    	Ramount_txt.setText("");
 				((DefaultTableModel)table.getModel()).setNumRows(0);
+				final_Total=0;
 			}
 		});
 		btnClear.setIcon(new ImageIcon("C:\\java_folder\\OOP_project\\src\\billing_system\\clear1.png"));
