@@ -20,6 +20,7 @@ class login_Test {
 
 	}
 	
+	@Test
 	// login fail test
 	void test1() {
 		String username ="karmagrg";
