@@ -16,7 +16,7 @@ public class User_Login {
 	private JTextField username;
 	private JPasswordField password_txt;
 	
-	///////////////////////////////// Launching The Application //////////////////// 
+///////////////////////////////// LAUNCHING THE APPLICATION ////////////////////////////////////////////// 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -29,36 +29,38 @@ public class User_Login {
   }
 });
 }
-/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 
 	
-	////////////////////////////// Creating the Application /////////////////////
+//////////////////////////////////////////// CREATING THE APPLICATION /////////////////////////////////////////
 	public  User_Login() {
 		initialize();
 		}
 	
 	
-	///////////////// Login Main Frame ///////////////////////
+/////////////////////////////////////// LOGIN MAIN FRAME   /////////////////////////////////////////////////////
 	private void initialize() {
 		loginframe = new JFrame();
 		loginframe.setForeground(Color.BLACK);
 		loginframe.setFont(new Font("Arial", Font.BOLD, 16));
 		loginframe.setBackground(new Color(0, 51, 51));
-		loginframe.setBounds(200, 100,591,402);
+		loginframe.setBounds(600, 100,591,402);
 		loginframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginframe.getContentPane().setLayout(null);
-	    /////////////////////////////////////////////////////////////////
 		
-         ////////////////////// Frame Title /////////////////////////////
+        // FRAME TITLE
 		JLabel textlogin = new JLabel("Please Login");
 		textlogin.setBounds(10, 88, 170, 41);
 		textlogin.setForeground(new Color(13, 13, 13));
 		textlogin.setBackground(Color.PINK);
 		textlogin.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		loginframe.getContentPane().add(textlogin);
-		//////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
 
-        //////////////////////// Labels //////////////////////////////////
+//////////////////////////////////////////// LABELS /////////////////////////////////////////////////////////////////
 		JLabel lblusername = new JLabel("USERNAME");
 		lblusername.setBounds(10,139, 96, 22);
 		loginframe.getContentPane().add(lblusername);
@@ -71,9 +73,11 @@ public class User_Login {
 		loginframe.getContentPane().add(lblpassword);
 		lblpassword.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblpassword.setHorizontalAlignment(SwingConstants.CENTER);
-        //////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
-		/////////////////////////// text Fields ///////////////////////////
+		
+		
+////////////////////////////////////////////////// TEXT FEILD ////////////////////////////////////////////////////////
 		username = new JTextField();
 		username.setBounds(10,176, 131,20);
 		loginframe.getContentPane().add(username);
@@ -83,9 +87,11 @@ public class User_Login {
 		password_txt.setBounds(10,235, 131, 20);
 		loginframe.getContentPane().add(password_txt);
 		password_txt.setColumns(10);
-        ////////////////////////////////////////////////////////////////// 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 		
-		////////////////////////// Buttons ///////////////////////////////
+		
+		
+////////////////////////////////////////// BUTTONS ///////////////////////////////////////////////////////////////////////
 		
 		// REGISTER BUTTON 
 		JLabel lblregister = new JLabel("New User? Click here to ");
@@ -93,19 +99,19 @@ public class User_Login {
 		loginframe.getContentPane().add(lblregister);
 		lblregister.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		JButton btnregister = new JButton("Sign Up");
-		btnregister.setBounds(168,313,80,25);
+		btnregister.setBounds(155,313,80,25);
 		btnregister.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		btnregister.addActionListener(new ActionListener() {
 		  public void actionPerformed(ActionEvent e) {
 		  	 //dispose();
 			  UserRegistration ur = new UserRegistration();
-		       ur.UserRegistrationScreen();
+		       ur.setVisible(true);
 		       dispose_loginn();
 		  }
 
 			private void dispose_loginn() {
 				// TODO Auto-generated method stub
-				setVisible(false);
+				//setVisible(false);
 				loginframe.dispose();
 				
 			}
@@ -167,19 +173,30 @@ public class User_Login {
 		btnexit.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		btnexit.addActionListener(new ActionListener() {
 		  public void actionPerformed(ActionEvent e) {
-			  System.exit(0);        
+			  int opt=JOptionPane.showConfirmDialog(null,"Are you sure to Exit?","Exit",JOptionPane.YES_NO_OPTION);
+				if (opt==0) {
+					dispose_loginframe();
+				}       
 		  }
+
+		private void dispose_loginframe() {
+			// TODO Auto-generated method stub
+			loginframe.dispose();
+			
+		}
 		});
 		loginframe.getContentPane().add(btnexit);
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		/////////////////////////////////////// Panel /////////////////////////////////////////////////////
+		
+		
+////////////////////////////////////////////////////// PANEL ////////////////////////////////////////////////////////
 		JLayeredPane layeredPane = new JLayeredPane();
-		layeredPane.setBounds(32, 183, 172, -65);
+		layeredPane.setBounds(100, 183, 172, -65);
 		loginframe.getContentPane().add(layeredPane);
 		
 		// PROJECT TITLE NAME
-		JLabel lblwelcome = new JLabel("Billing System");
+		JLabel lblwelcome = new JLabel("WELCOME");
 		lblwelcome.setFont(new Font("Times New Roman", Font.BOLD, 40));
 		lblwelcome.setBounds(4, 44, 280, 46);
 		loginframe.getContentPane().add(lblwelcome);
@@ -191,7 +208,7 @@ public class User_Login {
 		loginframe.getContentPane().add(lblpicture);
 	    loginframe.setSize(341,427);   
 		loginframe.setVisible(true);   
-		///////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}   
 
 		public void setVisible(boolean b) {
